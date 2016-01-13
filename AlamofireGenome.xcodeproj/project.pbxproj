@@ -10,6 +10,10 @@
 		371ACC001C46D94000CD5679 /* AlamofireGenome.h in Headers */ = {isa = PBXBuildFile; fileRef = 371ACBFF1C46D94000CD5679 /* AlamofireGenome.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		371ACC071C46D94000CD5679 /* AlamofireGenome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACBFC1C46D94000CD5679 /* AlamofireGenome.framework */; };
 		371ACC0C1C46D94000CD5679 /* AlamofireGenomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC0B1C46D94000CD5679 /* AlamofireGenomeTests.swift */; };
+		371ACC8D1C46DCB900CD5679 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACC8B1C46DCB900CD5679 /* Alamofire.framework */; };
+		371ACC8E1C46DCB900CD5679 /* Genome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACC8C1C46DCB900CD5679 /* Genome.framework */; };
+		371ACC911C46DCE800CD5679 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACC8F1C46DCE800CD5679 /* Nimble.framework */; };
+		371ACC921C46DCE800CD5679 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACC901C46DCE800CD5679 /* Quick.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +33,10 @@
 		371ACC061C46D94000CD5679 /* AlamofireGenomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlamofireGenomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		371ACC0B1C46D94000CD5679 /* AlamofireGenomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireGenomeTests.swift; sourceTree = "<group>"; };
 		371ACC0D1C46D94000CD5679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		371ACC8B1C46DCB900CD5679 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Checkouts/Alamofire/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		371ACC8C1C46DCB900CD5679 /* Genome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Genome.framework; path = "Carthage/Checkouts/Genome/build/Debug-iphoneos/Genome.framework"; sourceTree = "<group>"; };
+		371ACC8F1C46DCE800CD5679 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Carthage/Checkouts/Nimble/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
+		371ACC901C46DCE800CD5679 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +44,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371ACC8D1C46DCB900CD5679 /* Alamofire.framework in Frameworks */,
+				371ACC8E1C46DCB900CD5679 /* Genome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371ACC911C46DCE800CD5679 /* Nimble.framework in Frameworks */,
+				371ACC921C46DCE800CD5679 /* Quick.framework in Frameworks */,
 				371ACC071C46D94000CD5679 /* AlamofireGenome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +65,7 @@
 		371ACBF21C46D93F00CD5679 = {
 			isa = PBXGroup;
 			children = (
+				371ACC931C46DD2400CD5679 /* Frameworks */,
 				371ACBFE1C46D94000CD5679 /* AlamofireGenome */,
 				371ACC0A1C46D94000CD5679 /* AlamofireGenomeTests */,
 				371ACBFD1C46D94000CD5679 /* Products */,
@@ -84,6 +97,17 @@
 				371ACC0D1C46D94000CD5679 /* Info.plist */,
 			);
 			path = AlamofireGenomeTests;
+			sourceTree = "<group>";
+		};
+		371ACC931C46DD2400CD5679 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				371ACC8F1C46DCE800CD5679 /* Nimble.framework */,
+				371ACC901C46DCE800CD5679 /* Quick.framework */,
+				371ACC8B1C46DCB900CD5679 /* Alamofire.framework */,
+				371ACC8C1C46DCB900CD5679 /* Genome.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +400,7 @@
 				371ACC121C46D94000CD5679 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		371ACC131C46D94000CD5679 /* Build configuration list for PBXNativeTarget "AlamofireGenomeTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +409,7 @@
 				371ACC151C46D94000CD5679 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
