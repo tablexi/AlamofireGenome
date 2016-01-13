@@ -76,13 +76,31 @@ class AlamofireGenomeSpec: QuickSpec {
         let result = serializer.serializeResponse(nil, nil, data, nil)
         expect(result.value?.name).to(equal("platypus"))
       }
+    }
 
+    describe("responseArray") {
       it("returns an array when mapping succeeds") {
         let serializer: ResponseSerializer<[Animal], NSError> = Request.GenomeSerializer(nil)
 
         let data = "[{ \"name\": \"platypus\", \"star_rating\": 5 }, { \"name\": \"polar_bear\", \"star_rating\": 4 }]".dataUsingEncoding(NSUTF8StringEncoding)
         let result = serializer.serializeResponse(nil, nil, data, nil)
         expect(result.value?.count).to(equal(2))
+      }
+
+      it("returns an error when JSON is empty") {
+        let serializer: ResponseSerializer<[Animal], NSError> = Request.GenomeSerializer(nil)
+
+        let result = serializer.serializeResponse(nil, nil, NSData(), nil)
+        expect(result.error?.localizedDescription).to(match("Input data was nil"))
+      }
+
+      it("returns an error when JSON can't be mapped") {
+        let serializer: ResponseSerializer<[Animal], NSError> = Request.GenomeSerializer(nil)
+
+        let data = "[{ \"vehicle\": \"train\" }]".dataUsingEncoding(NSUTF8StringEncoding)
+
+        let result = serializer.serializeResponse(nil, nil, data, nil)
+        expect(result.error?.localizedDescription).to(match("FoundNil"))
       }
 
       it("allows for specifying keypath") {
@@ -93,6 +111,6 @@ class AlamofireGenomeSpec: QuickSpec {
         expect(result.value?.count).to(equal(2))
       }
     }
-
   }
+
 }
