@@ -12,46 +12,43 @@ import Genome
 
 extension Request {
 
-  public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<T, NSError> {
-    return ResponseSerializer { request, response, data, error in
-      guard error == nil else { return .Failure(error!) }
+  private static func parse<T>(keyPath: String?, request: NSURLRequest?, response: NSHTTPURLResponse?, data: NSData?, error: NSError?, callback: AnyObject throws -> T) -> Result<T, NSError> {
+    guard error == nil else { return .Failure(error!) }
 
-      let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-      let result = JSONResponseSerializer.serializeResponse(request, response, data, error)
-      guard let value = result.value else { return .Failure(result.error!) }
+    let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+    let result = JSONResponseSerializer.serializeResponse(request, response, data, error)
+    guard let value = result.value else { return .Failure(result.error!) }
 
-      do {
-        let json = try toJson(JSON.self, value: value, keyPath: keyPath)
-        let parsedObject = try T.mappedInstance(json)
-        return .Success(parsedObject)
-      } catch {
-        if let error = error as? CustomErrorConvertible {
-          return .Failure(error.error)
-        }
-        return .Failure(error as NSError)
+    do {
+      let result = try callback(value)
+      return .Success(result)
+    } catch {
+      if let error = error as? CustomErrorConvertible {
+        return .Failure(error.error)
       }
+      return .Failure(error as NSError)
     }
   }
 
+  public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<T, NSError> {
+    return ResponseSerializer { request, response, data, error in
+      let parseResult = parse(keyPath, request: request, response: response, data: data, error: error) { (value) -> T in
+        let json = try toJson(JSON.self, value: value, keyPath: keyPath)
+        let parsedObject = try T.mappedInstance(json)
+        return parsedObject
+      }
+      return parseResult
+    }
+  }
 
   public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<[T], NSError> {
     return ResponseSerializer { request, response, data, error in
-      guard error == nil else { return .Failure(error!) }
-
-      let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-      let result = JSONResponseSerializer.serializeResponse(request, response, data, error)
-      guard let value = result.value else { return .Failure(result.error!) }
-
-      do {
+      let parseResult = parse(keyPath, request: request, response: response, data: data, error: error) { (value) -> [T] in
         let json = try toJson([JSON].self, value: value, keyPath: keyPath)
         let parsedArray = try [T].mappedInstance(json)
-        return .Success(parsedArray)
-      } catch {
-        if let error = error as? CustomErrorConvertible {
-          return .Failure(error.error)
-        }
-        return .Failure(error as NSError)
+        return parsedArray
       }
+      return parseResult
     }
   }
 
