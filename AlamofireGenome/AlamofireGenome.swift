@@ -18,7 +18,7 @@ extension Request {
     case JSONError
   }
 
-  private static func parse<T, U>(type: U.Type, keyPath: String?, callback: U throws -> T) -> ResponseSerializer<T, NSError> {
+  private static func parse<T, U>(keyPath: String?, callback: U throws -> T) -> ResponseSerializer<T, NSError> {
     return ResponseSerializer { request, response, data, error in
       guard error == nil else { return .Failure(error!) }
 
@@ -52,7 +52,7 @@ extension Request {
   // MARK: Serialization
 
   public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<T, NSError> {
-    let serializer = parse(JSON.self, keyPath: keyPath) { json -> T in
+    let serializer = parse(keyPath) { (json: JSON) -> T in
       let parsedObject = try T.mappedInstance(json)
       return parsedObject
     }
@@ -60,7 +60,7 @@ extension Request {
   }
 
   public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<[T], NSError> {
-    let serializer = parse([JSON].self, keyPath: keyPath) { json -> [T] in
+    let serializer = parse(keyPath) { (json: [JSON]) -> [T] in
       let parsedArray = try [T].mappedInstance(json)
       return parsedArray
     }
