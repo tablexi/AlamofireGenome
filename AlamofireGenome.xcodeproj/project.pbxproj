@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		371ACC001C46D94000CD5679 /* AlamofireGenome.h in Headers */ = {isa = PBXBuildFile; fileRef = 371ACBFF1C46D94000CD5679 /* AlamofireGenome.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		371ACC071C46D94000CD5679 /* AlamofireGenome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACBFC1C46D94000CD5679 /* AlamofireGenome.framework */; };
-		371ACC0C1C46D94000CD5679 /* AlamofireGenomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC0B1C46D94000CD5679 /* AlamofireGenomeTests.swift */; };
 		371ACC8D1C46DCB900CD5679 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACC8B1C46DCB900CD5679 /* Alamofire.framework */; };
 		371ACC8E1C46DCB900CD5679 /* Genome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACC8C1C46DCB900CD5679 /* Genome.framework */; };
 		371ACC911C46DCE800CD5679 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACC8F1C46DCE800CD5679 /* Nimble.framework */; };
 		371ACC921C46DCE800CD5679 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACC901C46DCE800CD5679 /* Quick.framework */; };
+		371ACC951C46E10400CD5679 /* AlamofireGenomeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC941C46E10400CD5679 /* AlamofireGenomeSpec.swift */; };
+		371ACC971C46E1EA00CD5679 /* AlamofireGenome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC961C46E1EA00CD5679 /* AlamofireGenome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,12 +32,13 @@
 		371ACBFF1C46D94000CD5679 /* AlamofireGenome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlamofireGenome.h; sourceTree = "<group>"; };
 		371ACC011C46D94000CD5679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		371ACC061C46D94000CD5679 /* AlamofireGenomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlamofireGenomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		371ACC0B1C46D94000CD5679 /* AlamofireGenomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireGenomeTests.swift; sourceTree = "<group>"; };
 		371ACC0D1C46D94000CD5679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		371ACC8B1C46DCB900CD5679 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Checkouts/Alamofire/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		371ACC8C1C46DCB900CD5679 /* Genome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Genome.framework; path = "Carthage/Checkouts/Genome/build/Debug-iphoneos/Genome.framework"; sourceTree = "<group>"; };
 		371ACC8F1C46DCE800CD5679 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Carthage/Checkouts/Nimble/build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
 		371ACC901C46DCE800CD5679 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
+		371ACC941C46E10400CD5679 /* AlamofireGenomeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireGenomeSpec.swift; sourceTree = "<group>"; };
+		371ACC961C46E1EA00CD5679 /* AlamofireGenome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireGenome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		371ACBFE1C46D94000CD5679 /* AlamofireGenome */ = {
 			isa = PBXGroup;
 			children = (
+				371ACC961C46E1EA00CD5679 /* AlamofireGenome.swift */,
 				371ACBFF1C46D94000CD5679 /* AlamofireGenome.h */,
 				371ACC011C46D94000CD5679 /* Info.plist */,
 			);
@@ -93,7 +96,7 @@
 		371ACC0A1C46D94000CD5679 /* AlamofireGenomeTests */ = {
 			isa = PBXGroup;
 			children = (
-				371ACC0B1C46D94000CD5679 /* AlamofireGenomeTests.swift */,
+				371ACC941C46E10400CD5679 /* AlamofireGenomeSpec.swift */,
 				371ACC0D1C46D94000CD5679 /* Info.plist */,
 			);
 			path = AlamofireGenomeTests;
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371ACC971C46E1EA00CD5679 /* AlamofireGenome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				371ACC0C1C46D94000CD5679 /* AlamofireGenomeTests.swift in Sources */,
+				371ACC951C46E10400CD5679 /* AlamofireGenomeSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +336,7 @@
 		371ACC111C46D94000CD5679 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -342,12 +347,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tablexi.AlamofireGenome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		371ACC121C46D94000CD5679 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
