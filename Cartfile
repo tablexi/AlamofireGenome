@@ -1,2 +1,2 @@
-github "Alamofire/Alamofire"
-github "LoganWright/Genome"
+github "Alamofire/Alamofire" ~> 3.0
+github "LoganWright/Genome" ~> 1.0
