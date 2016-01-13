@@ -15,6 +15,10 @@
 		371ACC921C46DCE800CD5679 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371ACC901C46DCE800CD5679 /* Quick.framework */; };
 		371ACC951C46E10400CD5679 /* AlamofireGenomeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC941C46E10400CD5679 /* AlamofireGenomeSpec.swift */; };
 		371ACC971C46E1EA00CD5679 /* AlamofireGenome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC961C46E1EA00CD5679 /* AlamofireGenome.swift */; };
+		371ACC991C46EC5900CD5679 /* CustomErrorConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC981C46EC5900CD5679 /* CustomErrorConvertible.swift */; };
+		371ACC9B1C46ECFF00CD5679 /* SequenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC9A1C46ECFF00CD5679 /* SequenceError.swift */; };
+		371ACC9E1C46EDCA00CD5679 /* MappingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC9D1C46EDCA00CD5679 /* MappingError.swift */; };
+		371ACCA01C46EDD700CD5679 /* TransformationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC9F1C46EDD700CD5679 /* TransformationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,10 @@
 		371ACC901C46DCE800CD5679 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Carthage/Checkouts/Quick/build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
 		371ACC941C46E10400CD5679 /* AlamofireGenomeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireGenomeSpec.swift; sourceTree = "<group>"; };
 		371ACC961C46E1EA00CD5679 /* AlamofireGenome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireGenome.swift; sourceTree = "<group>"; };
+		371ACC981C46EC5900CD5679 /* CustomErrorConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomErrorConvertible.swift; sourceTree = "<group>"; };
+		371ACC9A1C46ECFF00CD5679 /* SequenceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceError.swift; sourceTree = "<group>"; };
+		371ACC9D1C46EDCA00CD5679 /* MappingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappingError.swift; sourceTree = "<group>"; };
+		371ACC9F1C46EDD700CD5679 /* TransformationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformationError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,7 @@
 		371ACBFE1C46D94000CD5679 /* AlamofireGenome */ = {
 			isa = PBXGroup;
 			children = (
+				371ACC9C1C46EDA100CD5679 /* CustomErrorConvertible */,
 				371ACC961C46E1EA00CD5679 /* AlamofireGenome.swift */,
 				371ACBFF1C46D94000CD5679 /* AlamofireGenome.h */,
 				371ACC011C46D94000CD5679 /* Info.plist */,
@@ -111,6 +120,17 @@
 				371ACC8C1C46DCB900CD5679 /* Genome.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		371ACC9C1C46EDA100CD5679 /* CustomErrorConvertible */ = {
+			isa = PBXGroup;
+			children = (
+				371ACC981C46EC5900CD5679 /* CustomErrorConvertible.swift */,
+				371ACC9D1C46EDCA00CD5679 /* MappingError.swift */,
+				371ACC9A1C46ECFF00CD5679 /* SequenceError.swift */,
+				371ACC9F1C46EDD700CD5679 /* TransformationError.swift */,
+			);
+			name = CustomErrorConvertible;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,7 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371ACC9B1C46ECFF00CD5679 /* SequenceError.swift in Sources */,
 				371ACC971C46E1EA00CD5679 /* AlamofireGenome.swift in Sources */,
+				371ACC991C46EC5900CD5679 /* CustomErrorConvertible.swift in Sources */,
+				371ACC9E1C46EDCA00CD5679 /* MappingError.swift in Sources */,
+				371ACCA01C46EDD700CD5679 /* TransformationError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
