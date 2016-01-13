@@ -52,19 +52,11 @@ extension Request {
   // MARK: Serialization
 
   public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<T, NSError> {
-    let serializer = parse(keyPath) { (json: JSON) -> T in
-      let parsedObject = try T.mappedInstance(json)
-      return parsedObject
-    }
-    return serializer
+    return parse(keyPath) { try T.mappedInstance($0) }
   }
 
   public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<[T], NSError> {
-    let serializer = parse(keyPath) { (json: [JSON]) -> [T] in
-      let parsedArray = try [T].mappedInstance(json)
-      return parsedArray
-    }
-    return serializer
+    return parse(keyPath) { try [T].mappedInstance($0) }
   }
 
   // MARK: Object
