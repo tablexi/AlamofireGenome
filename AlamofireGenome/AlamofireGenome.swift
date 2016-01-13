@@ -12,6 +12,12 @@ import Genome
 
 extension Request {
 
+  // MARK: Parsing
+
+  enum AlamofireGenomeError: ErrorType {
+    case JSONError
+  }
+
   private static func parse<T, U>(type: U.Type, keyPath: String?, callback: U throws -> T) -> ResponseSerializer<T, NSError> {
     return ResponseSerializer { request, response, data, error in
       guard error == nil else { return .Failure(error!) }
@@ -43,6 +49,8 @@ extension Request {
     }
   }
 
+  // MARK: Serialization
+
   public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<T, NSError> {
     let serializer = parse(JSON.self, keyPath: keyPath) { json -> T in
       let parsedObject = try T.mappedInstance(json)
@@ -59,9 +67,7 @@ extension Request {
     return serializer
   }
 
-  enum AlamofireGenomeError: ErrorType {
-    case JSONError
-  }
+  // MARK: Object
 
   public func responseObject<T: MappableObject>(completionHandler: Response<T, NSError> -> Void) -> Self {
     return responseObject(nil, keyPath: nil, completionHandler: completionHandler)
@@ -74,6 +80,8 @@ extension Request {
   public func responseObject<T: MappableObject>(queue: dispatch_queue_t?, keyPath: String?, completionHandler: Response<T, NSError> -> Void) -> Self {
     return response(queue: queue, responseSerializer: Request.GenomeSerializer(keyPath), completionHandler: completionHandler)
   }
+
+  // MARK: Array
 
   public func responseArray<T: MappableObject>(completionHandler: Response<[T], NSError> -> Void) -> Self {
     return responseArray(nil, keyPath: nil, completionHandler: completionHandler)
