@@ -12,53 +12,51 @@ import Genome
 
 extension Request {
 
-  private static func parse<T, U>(type: U.Type, keyPath: String?, request: NSURLRequest?, response: NSHTTPURLResponse?, data: NSData?, error: NSError?, callback: U throws -> T) -> Result<T, NSError> {
-    guard error == nil else { return .Failure(error!) }
+  private static func parse<T, U>(type: U.Type, keyPath: String?, callback: U throws -> T) -> ResponseSerializer<T, NSError> {
+    return ResponseSerializer { request, response, data, error in
+      guard error == nil else { return .Failure(error!) }
 
-    let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-    let result = JSONResponseSerializer.serializeResponse(request, response, data, error)
-    guard let value = result.value else { return .Failure(result.error!) }
+      let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+      let result = JSONResponseSerializer.serializeResponse(request, response, data, error)
+      guard let value = result.value else { return .Failure(result.error!) }
 
-    let JSONToMap: U?
-    if let keyPath = keyPath {
-      JSONToMap = value[keyPath] as? U
-    } else {
-      JSONToMap = value as? U
-    }
-
-    guard let json = JSONToMap else {
-      return .Failure(AlamofireGenomeError.JSONError as NSError)
-    }
-
-    do {
-      let result = try callback(json)
-      return .Success(result)
-    } catch {
-      if let error = error as? CustomErrorConvertible {
-        return .Failure(error.error)
+      let JSONToMap: U?
+      if let keyPath = keyPath {
+        JSONToMap = value[keyPath] as? U
+      } else {
+        JSONToMap = value as? U
       }
-      return .Failure(error as NSError)
+
+      guard let json = JSONToMap else {
+        return .Failure(AlamofireGenomeError.JSONError as NSError)
+      }
+
+      do {
+        let result = try callback(json)
+        return .Success(result)
+      } catch {
+        if let error = error as? CustomErrorConvertible {
+          return .Failure(error.error)
+        }
+        return .Failure(error as NSError)
+      }
     }
   }
 
   public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<T, NSError> {
-    return ResponseSerializer { request, response, data, error in
-      let parseResult = parse(JSON.self, keyPath: keyPath, request: request, response: response, data: data, error: error) { json -> T in
-        let parsedObject = try T.mappedInstance(json)
-        return parsedObject
-      }
-      return parseResult
+    let serializer = parse(JSON.self, keyPath: keyPath) { json -> T in
+      let parsedObject = try T.mappedInstance(json)
+      return parsedObject
     }
+    return serializer
   }
 
   public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<[T], NSError> {
-    return ResponseSerializer { request, response, data, error in
-      let parseResult = parse([JSON].self, keyPath: keyPath, request: request, response: response, data: data, error: error) { json -> [T] in
-        let parsedArray = try [T].mappedInstance(json)
-        return parsedArray
-      }
-      return parseResult
+    let serializer = parse([JSON].self, keyPath: keyPath) { json -> [T] in
+      let parsedArray = try [T].mappedInstance(json)
+      return parsedArray
     }
+    return serializer
   }
 
   enum AlamofireGenomeError: ErrorType {
