@@ -9,7 +9,7 @@ An [Alamofire](https://github.com/Alamofire/Alamofire) extension that automatica
 Add the following to your `Podfile`:
 
 ```
-pod 'AlamofireGenome', '~> 1.0'
+pod 'AlamofireGenome'
 ```
 
 ### Carthage
@@ -17,7 +17,7 @@ pod 'AlamofireGenome', '~> 1.0'
 Add the following to your `Cartfile`:
 
 ```
-github "tableix/AlamofireGenome" ~> 1.0
+github "tableix/AlamofireGenome"
 ```
 
 ## Usage
