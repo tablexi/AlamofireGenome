@@ -17,7 +17,7 @@ pod 'AlamofireGenome'
 Add the following to your `Cartfile`:
 
 ```
-github "tableix/AlamofireGenome"
+github "tablexi/AlamofireGenome"
 ```
 
 ## Usage
