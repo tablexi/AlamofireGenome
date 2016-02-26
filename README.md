@@ -68,3 +68,9 @@ Alamofire.request(.GET, url).responseArray { response: (Response<[GithubReposito
   }
 }
 ```
+
+### Contributing
+
+1. `git clone <repo_url>`
+2. cd AlamofireGenome
+3. ./bin/setup
