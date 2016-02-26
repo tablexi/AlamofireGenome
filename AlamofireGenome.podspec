@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "AlamofireGenome"
-  spec.version = "1.0.0"
+  spec.version = "1.0.1"
   spec.summary = "An Alamofire extension that automatically converts JSON into Swift objects using Genome"
   spec.homepage = "https://github.com/tablexi/AlamofireGenome"
   spec.license = { type: "MIT", file: "LICENSE" }
