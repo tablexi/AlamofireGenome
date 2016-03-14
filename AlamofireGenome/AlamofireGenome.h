@@ -6,7 +6,7 @@
 //  Copyright © 2016 Table XI. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Foundation;
 
 //! Project version number for AlamofireGenome.
 FOUNDATION_EXPORT double AlamofireGenomeVersionNumber;
@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double AlamofireGenomeVersionNumber;
 FOUNDATION_EXPORT const unsigned char AlamofireGenomeVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <AlamofireGenome/PublicHeader.h>
-
-

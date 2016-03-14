@@ -9,9 +9,6 @@ Pod::Spec.new do |spec|
     "John Dzak" => "john.dzak@gmail.com",
   }
   spec.platform = :ios, "8.0"
-  spec.osx.deployment_target = "10.9"
-  spec.watchos.deployment_target = "2.0"
-  spec.tvos.deployment_target = "9.0"
   spec.requires_arc = true
   spec.source = { git: "#{spec.homepage}.git", tag: "v#{spec.version}", submodules: true }
   spec.source_files = "AlamofireGenome/**/*.{h,swift}"
