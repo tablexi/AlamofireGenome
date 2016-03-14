@@ -46,7 +46,7 @@ To [fetch a single repository](https://developer.github.com/v3/repos/#get), we c
 
 ```swift
 let url = "https://api.github.com/repos/tablexi/AlamofireGenome"
-Alamofire.request(.GET, url).responseObject { response: (Response<GithubRepository, NSError>) in
+Alamofire.request(.GET, url).responseObject { (response: Response<GithubRepository, NSError>) in
   switch response.result {
     case .Success(let repository): // ...
     case .Failure(let error): // ...
@@ -61,7 +61,7 @@ To [fetch a list of repositories](https://developer.github.com/v3/repos/#list-or
 
 ```swift
 let url = "https://api.github.com/orgs/tablexi/repos"
-Alamofire.request(.GET, url).responseArray { response: (Response<[GithubRepository], NSError>) in
+Alamofire.request(.GET, url).responseArray { (response: Response<[GithubRepository], NSError>) in
   switch response.result {
     case .Success(let repositories): // ...
     case .Failure(let error): // ...
