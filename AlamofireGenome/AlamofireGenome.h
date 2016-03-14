@@ -6,7 +6,7 @@
 //  Copyright © 2016 Table XI. All rights reserved.
 //
 
-@import Foundation
+@import Foundation;
 
 //! Project version number for AlamofireGenome.
 FOUNDATION_EXPORT double AlamofireGenomeVersionNumber;
