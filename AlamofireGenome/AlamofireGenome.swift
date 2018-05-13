@@ -23,13 +23,13 @@ extension Request {
   /// Generics:
   ///   - T: `MappableObject` or `Array<MappableObject>`
   ///   - U: `JSON` or `Array<JSON>`
-  private static func parse<T, U>(keyPath: String?, callback: @escaping (U) throws -> T) -> ResponseSerializer<T, NSError> {
-    return ResponseSerializer { request, response, data, error in
-      guard error == nil else { return .Failure(error!) }
+  private static func parse<T, U>(keyPath: String?, callback: @escaping (U) throws -> T) -> DataResponseSerializer<T> {
+    return DataResponseSerializer { request, response, data, error in
+      guard error == nil else { return .failure(error!) }
 
-      let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+      let JSONResponseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
       let result = JSONResponseSerializer.serializeResponse(request, response, data, error)
-      guard let value = result.value else { return .Failure(result.error!) }
+      guard let value = result.value else { return .failure(result.error!) }
 
       let JSONToMap: U?
       if let keyPath = keyPath {
@@ -39,17 +39,17 @@ extension Request {
       }
 
       guard let json = JSONToMap else {
-        return .Failure(AlamofireGenomeError.JSONError as NSError)
+        return .failure(AlamofireGenomeError.JSONError as NSError)
       }
 
       do {
         let result = try callback(json)
-        return .Success(result)
+        return .success(result)
       } catch {
         if let error = error as? CustomErrorConvertible {
-          return .Failure(error.error)
+          return .failure(error.error)
         }
-        return .Failure(error as NSError)
+        return .failure(error as NSError)
       }
     }
   }
@@ -62,9 +62,9 @@ extension Request {
   /// Parameters:
   ///   - keyPath: The root key of the JSON
   ///
-  /// Returns: A Genome `ResponseSerializer`
-  public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<T, NSError> {
-    return parse(keyPath) { try T.mappedInstance($0) }
+  /// Returns: A Genome `DataResponseSerializer`
+  public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> DataResponseSerializer<T> {
+    return parse(keyPath: keyPath) { try T.mappedInstance($0) }
   }
 
   /// Creates a response serializer that returns an array of Genome 
@@ -73,9 +73,9 @@ extension Request {
   /// Parameters:
   ///   - keyPath: The root key of the JSON
   ///
-  /// Returns: A Genome `ResponseSerializer`
-  public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> ResponseSerializer<[T], NSError> {
-    return parse(keyPath) { try [T].mappedInstance($0) }
+  /// Returns: A Genome `DataResponseSerializer`
+  public static func GenomeSerializer<T: MappableObject>(keyPath: String?) -> DataResponseSerializer<[T]> {
+    return parse(keyPath: keyPath) { try [T].mappedInstance($0) }
   }
 
   // MARK: Object
@@ -88,7 +88,7 @@ extension Request {
   ///                        finished
   ///
   /// Returns: The request
-  public func responseObject<T: MappableObject>(completionHandler: Response<T, NSError> -> Void) -> Self {
+  public func responseObject<T: MappableObject>(completionHandler: (DataResponse<T>) -> Void) -> Self {
     return responseObject(nil, keyPath: nil, completionHandler: completionHandler)
   }
 
@@ -101,7 +101,7 @@ extension Request {
   ///                        finished
   ///
   /// Returns: The request
-  public func responseObject<T: MappableObject>(keyPath: String, completionHandler: Response<T, NSError> -> Void) -> Self {
+  public func responseObject<T: MappableObject>(keyPath: String, completionHandler: (DataResponse<T>) -> Void) -> Self {
     return responseObject(nil, keyPath: keyPath, completionHandler: completionHandler)
   }
 
@@ -115,7 +115,7 @@ extension Request {
   ///                        finished
   ///
   /// Returns: The request
-  public func responseObject<T: MappableObject>(queue: dispatch_queue_t?, keyPath: String?, completionHandler: Response<T, NSError> -> Void) -> Self {
+  public func responseObject<T: MappableObject>(queue: dispatch_queue_t?, keyPath: String?, completionHandler: (DataResponse<T>) -> Void) -> Self {
     return response(queue: queue, responseSerializer: Request.GenomeSerializer(keyPath), completionHandler: completionHandler)
   }
 
@@ -129,7 +129,7 @@ extension Request {
   ///                        finished
   ///
   /// Returns: The request
-  public func responseArray<T: MappableObject>(completionHandler: Response<[T], NSError> -> Void) -> Self {
+  public func responseArray<T: MappableObject>(completionHandler: (DataResponse<[T]>) -> Void) -> Self {
     return responseArray(nil, keyPath: nil, completionHandler: completionHandler)
   }
 
@@ -142,7 +142,7 @@ extension Request {
   ///                        finished
   ///
   /// Returns: The request
-  public func responseArray<T: MappableObject>(keyPath: String, completionHandler: Response<[T], NSError> -> Void) -> Self {
+  public func responseArray<T: MappableObject>(keyPath: String, completionHandler: (DataResponse<[T]>) -> Void) -> Self {
     return responseArray(nil, keyPath: keyPath, completionHandler: completionHandler)
   }
 
@@ -156,7 +156,7 @@ extension Request {
   ///                        finished
   ///
   /// Returns: The request
-  public func responseArray<T: MappableObject>(queue: dispatch_queue_t?, keyPath: String?, completionHandler: Response<[T], NSError> -> Void) -> Self {
+  public func responseArray<T: MappableObject>(queue: dispatch_queue_t?, keyPath: String?, completionHandler: (DataResponse<[T]>) -> Void) -> Self {
     return response(queue: queue, responseSerializer: Request.GenomeSerializer(keyPath), completionHandler: completionHandler)
   }
 
