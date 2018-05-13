@@ -14,7 +14,7 @@ extension Request {
 
   // MARK: Parsing
 
-  enum AlamofireGenomeError: ErrorType {
+  enum AlamofireGenomeError: Error {
     case JSONError
   }
 
@@ -23,7 +23,7 @@ extension Request {
   /// Generics:
   ///   - T: `MappableObject` or `Array<MappableObject>`
   ///   - U: `JSON` or `Array<JSON>`
-  private static func parse<T, U>(keyPath: String?, callback: U throws -> T) -> ResponseSerializer<T, NSError> {
+  private static func parse<T, U>(keyPath: String?, callback: @escaping (U) throws -> T) -> ResponseSerializer<T, NSError> {
     return ResponseSerializer { request, response, data, error in
       guard error == nil else { return .Failure(error!) }
 
