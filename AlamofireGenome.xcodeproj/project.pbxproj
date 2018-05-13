@@ -18,7 +18,6 @@
 		371ACC991C46EC5900CD5679 /* CustomErrorConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC981C46EC5900CD5679 /* CustomErrorConvertible.swift */; };
 		371ACC9B1C46ECFF00CD5679 /* SequenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC9A1C46ECFF00CD5679 /* SequenceError.swift */; };
 		371ACC9E1C46EDCA00CD5679 /* MappingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC9D1C46EDCA00CD5679 /* MappingError.swift */; };
-		371ACCA01C46EDD700CD5679 /* TransformationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC9F1C46EDD700CD5679 /* TransformationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +45,6 @@
 		371ACC981C46EC5900CD5679 /* CustomErrorConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomErrorConvertible.swift; sourceTree = "<group>"; };
 		371ACC9A1C46ECFF00CD5679 /* SequenceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceError.swift; sourceTree = "<group>"; };
 		371ACC9D1C46EDCA00CD5679 /* MappingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappingError.swift; sourceTree = "<group>"; };
-		371ACC9F1C46EDD700CD5679 /* TransformationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformationError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +126,6 @@
 				371ACC981C46EC5900CD5679 /* CustomErrorConvertible.swift */,
 				371ACC9D1C46EDCA00CD5679 /* MappingError.swift */,
 				371ACC9A1C46ECFF00CD5679 /* SequenceError.swift */,
-				371ACC9F1C46EDD700CD5679 /* TransformationError.swift */,
 			);
 			name = CustomErrorConvertible;
 			sourceTree = "<group>";
@@ -195,9 +192,11 @@
 				TargetAttributes = {
 					371ACBFB1C46D94000CD5679 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0830;
 					};
 					371ACC051C46D94000CD5679 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -245,7 +244,6 @@
 				371ACC971C46E1EA00CD5679 /* AlamofireGenome.swift in Sources */,
 				371ACC991C46EC5900CD5679 /* CustomErrorConvertible.swift in Sources */,
 				371ACC9E1C46EDCA00CD5679 /* MappingError.swift in Sources */,
-				371ACCA01C46EDD700CD5679 /* TransformationError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +308,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -350,6 +349,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -372,6 +372,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -389,6 +390,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tablexi.AlamofireGenome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -399,6 +401,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tablexi.AlamofireGenomeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -409,6 +412,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tablexi.AlamofireGenomeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
