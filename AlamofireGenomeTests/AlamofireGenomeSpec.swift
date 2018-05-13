@@ -22,7 +22,7 @@ struct Animal: StandardMappable {
     try starRating = <~map["star_rating"]
   }
 
-  func sequence(map: Map) throws {
+  func sequence(_ map: Map) throws {
   }
 }
 
@@ -48,7 +48,7 @@ class AlamofireGenomeSpec: QuickSpec {
       it("returns an error when JSON is invalid") {
         let serializer: ResponseSerializer<Animal, NSError> = Request.GenomeSerializer(nil)
 
-        let data = "{ no_dice: ".dataUsingEncoding(NSUTF8StringEncoding)
+        let data = "{ no_dice: ".data(using: String.Encoding.utf8)
         let result = serializer.serializeResponse(nil, nil, data, nil)
         expect(result.error?.localizedFailureReason).to(match("not in the correct format"))
       }
@@ -56,7 +56,7 @@ class AlamofireGenomeSpec: QuickSpec {
       it("returns an error when JSON can't be mapped") {
         let serializer: ResponseSerializer<Animal, NSError> = Request.GenomeSerializer(nil)
 
-        let data = "{ \"vehicle\": \"train\" }".dataUsingEncoding(NSUTF8StringEncoding)
+        let data = "{ \"vehicle\": \"train\" }".data(using: String.Encoding.utf8)
         let result = serializer.serializeResponse(nil, nil, data, nil)
         expect(result.error?.localizedDescription).to(match("FoundNil"))
       }
@@ -64,7 +64,7 @@ class AlamofireGenomeSpec: QuickSpec {
       it("returns an error when JSON has the wrong types") {
         let serializer: ResponseSerializer<Animal, NSError> = Request.GenomeSerializer(nil)
 
-        let data = "{ \"name\": \"platypus\", \"star_rating\": \"a million\" }".dataUsingEncoding(NSUTF8StringEncoding)
+        let data = "{ \"name\": \"platypus\", \"star_rating\": \"a million\" }".data(using: String.Encoding.utf8)
         let result = serializer.serializeResponse(nil, nil, data, nil)
         expect(result.error?.localizedDescription).to(match("UnexpectedValue"))
       }
@@ -72,7 +72,7 @@ class AlamofireGenomeSpec: QuickSpec {
       it("returns an object when mapping succeeds") {
         let serializer: ResponseSerializer<Animal, NSError> = Request.GenomeSerializer(nil)
 
-        let data = "{ \"name\": \"platypus\", \"star_rating\": 5 }".dataUsingEncoding(NSUTF8StringEncoding)
+        let data = "{ \"name\": \"platypus\", \"star_rating\": 5 }".data(using: String.Encoding.utf8)
         let result = serializer.serializeResponse(nil, nil, data, nil)
         expect(result.value?.name).to(equal("platypus"))
       }
@@ -82,7 +82,7 @@ class AlamofireGenomeSpec: QuickSpec {
       it("returns an array when mapping succeeds") {
         let serializer: ResponseSerializer<[Animal], NSError> = Request.GenomeSerializer(nil)
 
-        let data = "[{ \"name\": \"platypus\", \"star_rating\": 5 }, { \"name\": \"polar_bear\", \"star_rating\": 4 }]".dataUsingEncoding(NSUTF8StringEncoding)
+        let data = "[{ \"name\": \"platypus\", \"star_rating\": 5 }, { \"name\": \"polar_bear\", \"star_rating\": 4 }]".data(using: String.Encoding.utf8)
         let result = serializer.serializeResponse(nil, nil, data, nil)
         expect(result.value?.count).to(equal(2))
       }
@@ -97,7 +97,7 @@ class AlamofireGenomeSpec: QuickSpec {
       it("returns an error when JSON can't be mapped") {
         let serializer: ResponseSerializer<[Animal], NSError> = Request.GenomeSerializer(nil)
 
-        let data = "[{ \"vehicle\": \"train\" }]".dataUsingEncoding(NSUTF8StringEncoding)
+        let data = "[{ \"vehicle\": \"train\" }]".data(using: String.Encoding.utf8)
 
         let result = serializer.serializeResponse(nil, nil, data, nil)
         expect(result.error?.localizedDescription).to(match("FoundNil"))
@@ -106,7 +106,7 @@ class AlamofireGenomeSpec: QuickSpec {
       it("allows for specifying keypath") {
         let serializer: ResponseSerializer<[Animal], NSError> = Request.GenomeSerializer("animals")
 
-        let data = "{ \"animals\": [{ \"name\": \"platypus\", \"star_rating\": 5 }, { \"name\": \"polar_bear\", \"star_rating\": 4 }] }".dataUsingEncoding(NSUTF8StringEncoding)
+        let data = "{ \"animals\": [{ \"name\": \"platypus\", \"star_rating\": 5 }, { \"name\": \"polar_bear\", \"star_rating\": 4 }] }".data(using: String.Encoding.utf8)
         let result = serializer.serializeResponse(nil, nil, data, nil)
         expect(result.value?.count).to(equal(2))
       }
