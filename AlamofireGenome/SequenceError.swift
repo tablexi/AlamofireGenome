@@ -9,11 +9,10 @@
 import Foundation
 import Genome
 
-extension Genome.SequenceError: CustomErrorConvertible {
+extension Genome.NodeError: CustomErrorConvertible {
   var failureReason: String {
     switch self {
-    case .FoundNil(let value): return "\(self): \(value)"
-    case .UnexpectedValue(let value): return "\(self): \(value)"
+    case .unableToConvert(let value): return "\(self): \(value)"
     }
   }
 }

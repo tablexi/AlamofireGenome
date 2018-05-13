@@ -23,6 +23,9 @@ protocol CustomErrorConvertible {
 
 extension CustomErrorConvertible {
   var error: NSError {
-    return Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
+    let userInfo = [NSLocalizedFailureReasonErrorKey: failureReason]
+    // Taken from https://github.com/Alamofire/Alamofire/blob/3.0.0/Source/Error.swift
+    let error = NSError(domain: "com.alamofire.error", code: -6006, userInfo: userInfo)
+    return error
   }
 }

@@ -17,7 +17,6 @@
 		371ACC971C46E1EA00CD5679 /* AlamofireGenome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC961C46E1EA00CD5679 /* AlamofireGenome.swift */; };
 		371ACC991C46EC5900CD5679 /* CustomErrorConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC981C46EC5900CD5679 /* CustomErrorConvertible.swift */; };
 		371ACC9B1C46ECFF00CD5679 /* SequenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC9A1C46ECFF00CD5679 /* SequenceError.swift */; };
-		371ACC9E1C46EDCA00CD5679 /* MappingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ACC9D1C46EDCA00CD5679 /* MappingError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +43,6 @@
 		371ACC961C46E1EA00CD5679 /* AlamofireGenome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireGenome.swift; sourceTree = "<group>"; };
 		371ACC981C46EC5900CD5679 /* CustomErrorConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomErrorConvertible.swift; sourceTree = "<group>"; };
 		371ACC9A1C46ECFF00CD5679 /* SequenceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceError.swift; sourceTree = "<group>"; };
-		371ACC9D1C46EDCA00CD5679 /* MappingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappingError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				371ACC981C46EC5900CD5679 /* CustomErrorConvertible.swift */,
-				371ACC9D1C46EDCA00CD5679 /* MappingError.swift */,
 				371ACC9A1C46ECFF00CD5679 /* SequenceError.swift */,
 			);
 			name = CustomErrorConvertible;
@@ -243,7 +240,6 @@
 				371ACC9B1C46ECFF00CD5679 /* SequenceError.swift in Sources */,
 				371ACC971C46E1EA00CD5679 /* AlamofireGenome.swift in Sources */,
 				371ACC991C46EC5900CD5679 /* CustomErrorConvertible.swift in Sources */,
-				371ACC9E1C46EDCA00CD5679 /* MappingError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
