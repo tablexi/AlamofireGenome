@@ -1,4 +1,6 @@
-# AlamofireGenome
+# AlamofireGenome (NOT MAINTAINED)
+
+**THIS LIBRARY IS NO LONGER MAINTAINED. IF YOU'RE LOOKING FOR A SIMPLE WAY TO SERIALIZE/DESERIALIZE JSON WITH ALAMOFIRE, CONSIDER USING [CodeableAlamofire](https://github.com/Otbivnoe/CodableAlamofire).**
 
 An [Alamofire](https://github.com/Alamofire/Alamofire) extension that automatically converts JSON into Swift objects using [Genome](https://github.com/LoganWright/Genome).
 
